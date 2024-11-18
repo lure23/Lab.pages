@@ -1,16 +1,17 @@
-# Labs.cfp-sk-gcip
+# Labs.cfp-sk-<strike>gcip</strike>-lucia
 
 A testing ground for [CloudFlare Pages](https://pages.cloudflare.com/). 
 
 
 ![](.images/tools-triad.png)
 
+<!-- tbd. redraw with Excalibur -->
+
 Web development can be seen as a triangle of tools and services.
 
 - Framework defines the application (both web client and back end). We use [SvelteKit](https://kit.svelte.dev).
 - Deployment takes care of keeping the application available, and scaling up/down to keep costs at bay. We choose [Cloudflare Pages](https://www.cloudflare.com).
-- Identity management helps authenticate our users, to manage them, and to grant them rights. Our initial choice here is [Google Cloud Identity Platform](https://cloud.google.com/security/products/identity-platform)
-
+- Identity management helps authenticate our users, to manage them, and to grant them rights. <!-- Our initial choice here is [Google Cloud Identity Platform](https://cloud.google.com/security/products/identity-platform) --> Our choice here is [Lucia](https://lucia-auth.com), with Cloudflare XXX providing the persistency.
 
 
 ## Pre-reading
@@ -33,6 +34,15 @@ Web development can be seen as a triangle of tools and services.
 
 Also [SvelteKit](https://kit.svelte.dev/) knowledge is expected. You can probably "wing it" (i.e. understand by reading) if you have experience from other full stack frameworks. Just that this repo is not about teaching SvelteKit.
 
+### Lucia
+
+[Lucia](https://lucia-auth.com) is not an identity platform - it's a library. We bring our own database to it, and it helps implement web app authentication. It has an adapter to Cloudflare, [good reviews](https://www.youtube.com/watch?v=o7qpw6NeFgw) (21:30) on Youtube so there didn't seem good reasons *not to try* it.
+
+<!-- tbd. tell... experience... why we chose it??? -->
+
+
+
+<!-- disabled
 ### Google Cloud Identity Platform
 
 This one is a bit of a bipedal creation. You can do *all* access using [Google Cloud Identity Platform](https://cloud.google.com/security/products/identity-platform) console - but the best documentation is on the side of [Firebase Admin Auth](https://firebase.google.com/docs/auth/admin).
@@ -40,6 +50,7 @@ This one is a bit of a bipedal creation. You can do *all* access using [Google C
 In short, these are the same product. We need just a fraction of the abilities, and anything you need to set up is described below.
 
 >Obviously, other identity providers exist as well. Just happens so that the author was already familiar with Google and cough-Firebase-/cough.
+-->
 
 
 ## Requirements
@@ -336,33 +347,9 @@ In addition, ESLint 9 [requires Node.js >= 18.18.0](https://eslint.org/blog/2024
 Now, your pages get deployed to an URL like `https://lab-4hl.pages.dev` at each new push to `main` (where the build succeeds).
 
 
-<!-- tbd. 
+<!-- tbd.
 ## Testing
 -->
-
-## Some background (optional)
-
-The `app` folder has originally been created by:
-
-```
-$ npm create cloudflare@latest app -- --framework=svelte
-```
-
->Note: Cloudflare uses `svelte` and SvelteKit interchangeably. The above means SvelteKit (the full stack framework), not only Svelte (the browser-side framework).
-
-The creation ends with:
-
-```
-[...]
-│ Navigate to the new directory cd app
-│ Run the development server **npm run dev**
-│ Preview your application **npm run preview**
-│ Deploy your application **npm run deploy**
-│ Read the documentation https://developers.cloudflare.com/pages
-│ Stuck? Join us at https://discord.cloudflare.com
-```
-
-The suggested commands are the normal SvelteKit development commands. The way Cloudflare integrates with this framework (since Apr'24) is admirable! 👏👏
 
 
 ## References
