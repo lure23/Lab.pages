@@ -293,8 +293,8 @@ In addition, ESLint 9 [requires Node.js >= 18.18.0](https://eslint.org/blog/2024
 
 - `Settings` > `Environment variables`
 
-      >![](.images/cf-node-version.png)
-      
+>![](.images/cf-node-version.png)
+
    - and same for `Preview`
 
 Now, your pages get deployed to an URL like `https://lab-4hl.pages.dev` at each new push to `main` (where the build succeeds).
